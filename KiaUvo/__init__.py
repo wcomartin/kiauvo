@@ -24,6 +24,8 @@ class KiaUvo(object):
     base_url = 'https://www.myuvo.ca/tods/api/'
 
     def __init__(self, username, password):
+        self.vehicles = []
+
         self.username = username
         self.password = password
 
@@ -83,3 +85,6 @@ class KiaUvo(object):
         result = req.json()['result']
 
         return Vehicle(result['vehicle'], result['status'])
+
+    def update_vehicle_states(self):
+        self.vehicles = [self.get_vehicle_status(x) for x in self.get_vehicle_list()]
