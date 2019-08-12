@@ -24,10 +24,17 @@ class KiaUvo(object):
     base_url = 'https://www.myuvo.ca/tods/api/'
 
     def __init__(self, username, password):
-        self.auth = self.login(username, password)
+        self.username = username
+        self.password = password
+
+        self.auth = self.__login(username, password)
         self.verify_token()
 
-    def login(self, username, password):
+    def login(self):
+        self.auth = self.__login(self.username, self.password)
+        self.verify_token()
+
+    def __login(self, username, password):
         url = self.base_url + 'lgn'
         payload = {'loginId': username, 'password': password}
         headers = self.default_headers
