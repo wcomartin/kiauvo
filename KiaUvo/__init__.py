@@ -42,7 +42,6 @@ class KiaUvo(object):
         headers = self.default_headers
 
         req = requests.post(url, data=json.dumps(payload), headers=headers)
-        print(json.dumps(req.json(), indent=4, sort_keys=True))
 
         xhr = req.json()
 
@@ -56,7 +55,6 @@ class KiaUvo(object):
         })
 
         req = requests.post(url, headers=headers, data=json.dumps({}))
-        print(json.dumps(req.json(), indent=4, sort_keys=True))
 
         return req.json()['result']
 
@@ -68,11 +66,11 @@ class KiaUvo(object):
         })
 
         req = requests.post(url, headers=headers, data=json.dumps({}))
-        print(json.dumps(req.json(), indent=4, sort_keys=True))
 
         return [self.get_vehicle_status(x['vehicleId']) for x in req.json()['result']['vehicles']]
 
     def get_vehicle_status(self, vehicle_id):
+        print(vehicle_id)
         url = self.base_url + 'sltvhcl'
         headers = self.default_headers.copy()
         headers.update({
@@ -81,10 +79,12 @@ class KiaUvo(object):
         })
 
         req = requests.post(url, headers=headers, data=json.dumps({}))
-        print(json.dumps(req.json(), indent=4, sort_keys=True))
         result = req.json()['result']
 
         return Vehicle(result['vehicle'], result['status'])
 
     def update_vehicle_states(self):
-        self.vehicles = [self.get_vehicle_status(x) for x in self.get_vehicle_list()]
+        self.vehicles = self.get_vehicle_list()
+
+    def request_vehicle_update(self):
+        # https://www.myuvo.ca/tods/api/rltmvhclsts
