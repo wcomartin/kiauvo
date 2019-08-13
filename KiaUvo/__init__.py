@@ -86,5 +86,5 @@ class KiaUvo(object):
     def update_vehicle_states(self):
         self.vehicles = self.get_vehicle_list()
 
-    def request_vehicle_update(self):
+    # def request_vehicle_update(self):
         # https://www.myuvo.ca/tods/api/rltmvhclsts
