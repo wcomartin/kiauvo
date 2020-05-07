@@ -3,13 +3,13 @@ from distutils.core import setup
 setup(
     name='KiaUvo',
     packages=['KiaUvo'],
-    version='0.5',
+    version='0.14',
     license='MIT',
     description='API Wrapper for the Kia Uvo service',
     author='William Comartin',
     author_email='williamcomartin@gmail.com',
     url='https://github.com/wcomartin/kiauvo',
-    download_url='https://github.com/wcomartin/kiauvo/archive/v_05.tar.gz',
+    download_url='https://github.com/wcomartin/kiauvo/archive/v_14.tar.gz',
     keywords=['Kia', 'Uvo', 'Api'],
     install_requires=[
         'requests',
