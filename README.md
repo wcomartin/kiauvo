@@ -1,3 +1,7 @@
+# Work in Progress - for a more complete library using Javascript check out https://github.com/Hacksore/bluelinky
+
+I am working on porting the bluelinky code to python, but may take some time.
+
 # Kia Uvo
 
 API Wrapper for the Kia Uvo service
